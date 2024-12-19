@@ -1,1 +1,7 @@
 <h1><%= @budget.name %></h1>
+
+<% @budget.categories.each do |category| %>
+<ul>
+  <li><%= category.name %> ? <%= category.goal_amount %> : <%= category.available_amount %></li>
+</ul>
+<% end %>
