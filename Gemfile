@@ -61,3 +61,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# NOTE added by yours truly
+
+# Hot reloads the app
+gem "hotwire-spark"
