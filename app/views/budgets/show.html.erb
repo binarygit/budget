@@ -1,7 +1,13 @@
-<h1><%= @budget.name %></h1>
+<%= turbo_frame_tag "budget_frame" do %>
+  <h1><%= @budget.name %></h1>
 
-<% @budget.categories.each do |category| %>
-<ul>
-  <li><%= category.name %> ? <%= category.goal_amount %> : <%= category.available_amount %></li>
-</ul>
+  <table>
+    <tr>
+      <td>Category</td>
+      <td>Goal amount</td>
+      <td>Available amount</td>
+    </tr>
+
+    <%= render partial: 'category', collection: @budget.categories %>
+  </table>
 <% end %>
