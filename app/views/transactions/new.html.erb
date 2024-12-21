@@ -1,0 +1,21 @@
+<%= turbo_frame_tag @transaction do %>
+  <h2>New Transaction</h2>
+
+  <%= form_with model: @transaction do |f| %>
+    <div>
+      <%= f.label :amount %>
+      <%= f.number_field :amount %>
+    </div>
+    <div>
+      <%= f.label :category %>
+      <%= select_tag 'transaction[category_id]', options_for_select(@categories.pluck(:name, :id)) %>
+    </div>
+    <div>
+      <%= f.label :transaction_type %>
+      <%= select_tag 'transaction[transaction_type]', options_for_select(Transaction.transaction_types.to_a) %>
+    </div>
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>
+<% end %>
