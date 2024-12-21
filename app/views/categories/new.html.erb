@@ -1,0 +1,25 @@
+<h1>Create new categories</h1>
+
+<turbo-frame>
+    <%= form_with model: @category do |f| %>
+      <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.label :goal_amount %>
+        <%= f.number_field :goal_amount %>
+      </div>
+      <div>
+        <%= f.label :available_amount %>
+        <%= f.number_field :available_amount %>
+      </div>
+      <div>
+        <%= f.label :budget %>
+        <%= select_tag "category['budget_id']", options_for_select(@budgets.pluck(:name, :id)) %>
+      </div>
+      <div>
+        <%= f.submit %>
+      </div>
+    <% end %>
+</turbo-frame>
