@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
 
     if @category.save
       flash[:notice] = "#{@category.name} category created successfully."
+      render turbo_stream: turbo_stream.append(:categories_list, partial: "category", locals: {category: @category})
     else
       flash[:error] = "Category couldn't be created."
     end

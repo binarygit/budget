@@ -1,10 +1,19 @@
 require "test_helper"
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
+  test "should get index" do
+    get categories_path
+    assert_response :success
+
+    assert_select "turbo-frame[id='categories_frame']"
+    assert_select "ol[id='categories_list']"
+  end
+
   test "should get new" do
     get new_category_path
     assert_response :success
 
+    assert_select "turbo-frame[id='categories_frame']"
     assert_select "input[type='text'][name='category[name]']"
     assert_select "input[type='number'][name='category[goal_amount]']"
     assert_select "input[type='number'][name='category[available_amount]']"
@@ -23,6 +32,6 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_response :redirect
+    assert_response :success
   end
 end

@@ -1,0 +1,7 @@
+<%= turbo_frame_tag 'categories_frame' do %>
+  <h2>List of categories</h2>
+
+  <ol id="categories_list">
+      <%= render partial: 'category', collection: @categories %>
+  </ol>
+<% end %>
